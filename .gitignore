@@ -1,0 +1,62 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+*.egg
+build/
+dist/
+.eggs/
+
+# --- Virtual envs ---
+.venv/
+venv/
+env/
+ENV/
+
+# --- Jupyter ---
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# --- IDEs ---
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# --- ML artifacts ---
+lightning_logs/
+mlruns/
+wandb/
+*.ckpt
+*.pt
+*.pth
+*.onnx
+
+# --- Data (heavy, fetched via script) — root data/ folder only, not src/data/ ---
+/data/
+!/data/.gitkeep
+*.zip
+*.tar.gz
+
+# --- Reports (regenerated; keep dirs, ignore artifacts) ---
+/reports/figures/*.png
+/reports/metrics/*.json
+!/reports/figures/.gitkeep
+!/reports/metrics/.gitkeep
+
+# --- Local / OS ---
+*.log
+.env
+.coverage
+.pytest_cache/
+htmlcov/
+
+# --- Private notes (do NOT commit) ---
+docs/LAUNCH_PLAYBOOK.md
+docs/NOTES.md
+NOTES.md
+TODO.md
