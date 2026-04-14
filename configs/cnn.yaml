@@ -1,0 +1,23 @@
+defaults: base.yaml
+
+experiment:
+  name: cnn
+
+model:
+  type: cnn
+  num_classes: 2
+  lr: 1.0e-3
+  optimizer: adamw
+  weight_decay: 1.0e-4
+  scheduler: cosine
+  dropout: 0.4
+
+data:
+  # Stronger augmentation for the CNN
+  augmentation:
+    horizontal_flip: true
+    rotation_degrees: 10
+    color_jitter:
+      brightness: 0.2
+      contrast: 0.2
+      saturation: 0.2

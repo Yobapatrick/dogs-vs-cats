@@ -1,0 +1,10 @@
+defaults: base.yaml
+
+experiment:
+  name: logreg
+
+model:
+  type: logreg
+  num_classes: 2
+  lr: 1.0e-3
+  optimizer: adam
