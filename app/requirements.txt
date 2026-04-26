@@ -1,0 +1,15 @@
+# Requirements for the Streamlit demo only.
+# Keeps the main requirements.txt focused on ML training.
+# This file is also what Hugging Face Spaces reads at the repo root,
+# so a copy of it is symlinked / mirrored to ../requirements-hf.txt for deployment.
+
+streamlit>=1.32.0
+
+# ML stack — same versions as the main requirements.txt
+torch>=2.1.0
+torchvision>=0.16.0
+pytorch-lightning>=2.1.0
+torchmetrics>=1.2.0
+Pillow>=10.0.0
+numpy>=1.24.0
+pyyaml>=6.0
