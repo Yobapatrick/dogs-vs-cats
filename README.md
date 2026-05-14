@@ -466,16 +466,26 @@ Pre-commit hooks run automatically on `git commit`. CI runs on every push and PR
 
 ---
 
-## 📜 License
-
-This project is licensed under the MIT License — see [`LICENSE`](LICENSE).
 
 ---
 
 <div align="center">
 
-**Built with ⚡ PyTorch Lightning** · **Linted with 🦀 Ruff** · **Formatted with 🖤 Black**
+### Built with ⚡ PyTorch Lightning · Linted with 🦀 Ruff · Formatted with 🖤 Black
 
-*If you found this useful as a reference for structuring an ML repo, leaving a ⭐ on GitHub helps others find it.*
+<br/>
+
+**Patrick Yoba**
+*Engineering Student · 3IL Ingénieurs*
+
+[![GitHub](https://img.shields.io/badge/GitHub-tonpseudo-181717?style=flat-square&logo=github)](https://github.com/Yobapatrick)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Patrick_Yoba-0A66C2?style=flat-square&logo=linkedin)](https://linkedin.com/in/yoba-patrick)
+[![Email](https://img.shields.io/badge/Email-Contact-D14836?style=flat-square&logo=gmail&logoColor=white)](mailto:yobapatrick2@gmail.com)
+
+<br/>
+
+<sub>If this project gave you ideas for your own ML repo, a ⭐ on the repository helps others find it.</sub>
+
+</div>
 
 </div>
