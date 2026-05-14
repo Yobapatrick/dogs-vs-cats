@@ -479,7 +479,7 @@ Pre-commit hooks run automatically on `git commit`. CI runs on every push and PR
 *Engineering Student · 3IL Ingénieurs*
 
 [![GitHub](https://img.shields.io/badge/GitHub-Yobapatrick-181717?style=flat-square&logo=github)](https://github.com/Yobapatrick)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Patrick_Yoba-0A66C2?style=flat-square&logo=linkedin)](https://linkedin.com/in/yoba-patrick)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Patrick_Yoba-0A66C2?style=flat-square&logo=linkedin)](https://linkedin.com/in/patrick-yoba)
 [![Email](https://img.shields.io/badge/Email-D14836?style=flat-square&logo=gmail&logoColor=white)](mailto:yobapatrick2@gmail.com)
 
 <br/>
