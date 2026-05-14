@@ -16,9 +16,9 @@
 
 <br/>
 
-**CNN: 90.1% accuracy · AUC 0.965**  |  **Baseline LogReg: 58.7% · AUC 0.623**
+**CNN: 88.6% accuracy**  |  **Baseline LogReg: 56.4% accuracy**
 
-*A ~31-point accuracy gap that quantifies exactly what convolutional inductive bias buys you on natural images.*
+*A ~32-point accuracy gap that quantifies exactly what convolutional inductive bias buys you on natural images.*
 
 </div>
 
@@ -28,6 +28,7 @@
 
 - [Project Overview](#-project-overview)
 - [Results at a Glance](#-results-at-a-glance)
+- [Try the Live Demo](#-try-the-live-demo)
 - [Why This Project](#-why-this-project)
 - [Dataset](#-dataset)
 - [Methodology](#-methodology)
@@ -61,11 +62,10 @@ End-to-end binary image classification (cat vs dog) treated as a **rigorous head
 
 | Metric | Logistic Regression | **CNN** | Δ (absolute) |
 |:---|:---:|:---:|:---:|
-| **Accuracy** | 0.587 | **0.901** | +31.4% |
-| **F1-Score** | 0.557 | **0.897** | +34.0% |
-| **Precision** | 0.596 | **0.906** | +31.0% |
-| **Recall** | 0.530 | **0.893** | +36.3% |
-| **ROC-AUC** | 0.623 | **0.965** | +0.342 |
+| **Accuracy** | 0.564 | **0.886** | +32.2% |
+| **F1-Score** | 0.580 | **0.883** | +30.3% |
+| **Precision** | 0.556 | **0.898** | +34.2% |
+| **Recall** | 0.608 | **0.871** | +26.3% |
 
 <div align="center">
   <img src="reports/figures/fig1_training_curves.png" alt="Training curves" width="850"/>
@@ -76,14 +76,14 @@ End-to-end binary image classification (cat vs dog) treated as a **rigorous head
 
 <div align="center">
   <img src="reports/figures/fig2_confusion.png" alt="Confusion matrices" width="850"/>
-  <br/><em>Figure 2 — The CNN is symmetric (≈9% error each side); LogReg confuses dogs as cats ~47% of the time.</em>
+  <br/><em>Figure 2 — The CNN's errors are roughly symmetric between classes; LogReg confuses the two classes far more often.</em>
 </div>
 
 <br/>
 
 <div align="center">
   <img src="reports/figures/fig3_roc_probs.png" alt="ROC and probability distributions" width="850"/>
-  <br/><em>Figure 3 — ROC AUC 0.965 vs 0.623 and the bimodal vs near-uniform probability distributions.</em>
+  <br/><em>Figure 3 — ROC curves and the bimodal vs near-uniform probability distributions.</em>
 </div>
 
 **The TL;DR**: a linear classifier on raw pixels lives just above random; replacing it with a small CNN — same data, same loss, same trainer — closes most of the gap to a human-level decision.
@@ -162,7 +162,7 @@ Both models inherit from a shared `BaseClassifier` (`src/models/base.py`) that o
 
 ### Evaluation
 
-Five quantitative metrics (accuracy, F1, precision, recall, ROC-AUC), confusion matrices, ROC curves, and a **qualitative error gallery** showing the actual images each model got wrong. Defining the metrics once on `BaseClassifier` keeps the comparison strictly symmetric.
+Four quantitative metrics (accuracy, F1, precision, recall), confusion matrices, ROC curves, and a **qualitative error gallery** showing the actual images each model got wrong. Defining the metrics once on `BaseClassifier` keeps the comparison strictly symmetric.
 
 ---
 
@@ -300,8 +300,8 @@ Outputs land in `checkpoints/` (best model) and `reports/metrics/` (JSON).
 make evaluate
 # Or, with explicit paths:
 python scripts/evaluate.py \
-    --logreg-ckpt checkpoints/logreg-best-val_acc=0.587.ckpt \
-    --cnn-ckpt    checkpoints/cnn-best-val_acc=0.901.ckpt
+    --logreg-ckpt checkpoints/logreg-best-val_acc=0.581.ckpt \
+    --cnn-ckpt    checkpoints/cnn-best-val_acc=0.886.ckpt
 ```
 
 Figures land in `reports/figures/`.
@@ -333,28 +333,23 @@ print(result.as_dict())
 
 ```bash
 make test
-# 14 passed in 77.24s · 95% coverage on src/data/datamodule.py
+# 14 passed · 95% coverage on src/data/datamodule.py
 ```
 
 ---
 
 ## 📊 Detailed Results & Analysis
 
-### Per-class confusion (test set)
+### Test-set performance
 
-|  | Predicted Cat | Predicted Dog |
-|---|---|---|
-| **True Cat** (LogReg) | 1214 (64.4%) | 672 (35.6%) |
-| **True Dog** (LogReg) | 876 (47.0%) | 987 (53.0%) |
-| **True Cat** (CNN) | **1713 (90.8%)** | 173 (9.2%) |
-| **True Dog** (CNN) | 200 (10.7%) | **1663 (89.3%)** |
+On the held-out test set, the **CNN reaches 88.6% accuracy** (F1 0.883, precision 0.898, recall 0.871), while the **Logistic Regression baseline sits at 56.4%** (F1 0.580) — barely above the 50% chance level for a balanced two-class problem.
 
-The LogReg's 47% dog→cat error rate is essentially random — the linear model has nothing to grab onto at this resolution. The CNN's 9–10% errors are symmetric, indicating no class bias.
+The CNN's errors are roughly symmetric between the two classes, indicating no systematic class bias. The Logistic Regression, by contrast, misclassifies a large fraction of one class as the other — its decision boundary on raw flattened pixels is only marginally better than random guessing.
 
 ### What can we conclude?
 
 1. **Architectural inductive bias dominates** at this resolution. Adding parameters to the linear model (e.g., MLPs) wouldn't close the gap — the issue is *what* the linear model can express, not its capacity.
-2. **The CNN's training is healthy.** The train−val gap spikes early (epoch 8, ~28%), then resolves itself — characteristic of post-warmup BatchNorm dynamics, not pathological overfitting.
+2. **The CNN's training is healthy.** The train−val gap spikes early then resolves itself — characteristic of post-warmup BatchNorm dynamics, not pathological overfitting. The LogReg, meanwhile, shows an unstable validation loss, confirming the linear model is a poor fit for raw-pixel inputs.
 3. **The CNN is well-calibrated.** Its predictive distribution is bimodal at the extremes (most predictions are confident); LogReg outputs cluster around 0.5 — it's *uncertain about almost everything*.
 
 > 🔍 For a richer analysis with the qualitative misclassification gallery, see `notebooks/04_model_comparison.ipynb`.
@@ -392,6 +387,7 @@ The LogReg's 47% dog→cat error rate is essentially random — the linear model
 - **Externalise configuration**: YAML with inheritance, no hardcoded hyperparameters.
 - **Operate the dev tooling**: pre-commit hooks, CI, Docker, Makefile.
 - **Communicate results**: README-driven storytelling with figures that *make a point*, not just decorate.
+- **Deploy ML**: a containerized Streamlit demo running live on Hugging Face Spaces.
 
 ---
 
@@ -407,7 +403,8 @@ The LogReg's 47% dog→cat error rate is essentially random — the linear model
 | **CI/CD** | GitHub Actions: ruff + black + pytest on Python 3.10 and 3.11 |
 | **Code quality** | Ruff + Black + pre-commit hooks (including `nbstripout` for clean notebook diffs) |
 | **Containerization** | Multi-stage Dockerfile, non-root user, slim base image |
-| **Documentation** | README + METHODOLOGY.md + docstrings + this commit history |
+| **Deployment** | Live Streamlit demo on Hugging Face Spaces |
+| **Documentation** | README + METHODOLOGY.md + docstrings + a clean commit history |
 
 ---
 
@@ -429,7 +426,8 @@ The LogReg's 47% dog→cat error rate is essentially random — the linear model
 
 ### Production / Deployment
 
-- [ ] **ONNX export** + **FastAPI serving** + **Streamlit demo**.
+- [x] **Streamlit demo** deployed on Hugging Face Spaces.
+- [ ] **ONNX export** + **FastAPI serving** for a production inference endpoint.
 - [ ] **MLflow tracking server** for experiment versioning.
 - [ ] **Model card** documenting intended use, limitations, fairness considerations.
 - [ ] **Continuous training pipeline** triggered by new data drops.
@@ -466,6 +464,9 @@ Pre-commit hooks run automatically on `git commit`. CI runs on every push and PR
 
 ---
 
+## 📜 License
+
+This project is licensed under the MIT License — see [`LICENSE`](LICENSE).
 
 ---
 
@@ -485,7 +486,5 @@ Pre-commit hooks run automatically on `git commit`. CI runs on every push and PR
 <br/>
 
 <sub>If this project gave you ideas for your own ML repo, a ⭐ on the repository helps others find it.</sub>
-
-</div>
 
 </div>
