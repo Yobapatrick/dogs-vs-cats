@@ -12,7 +12,7 @@
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 [![CI](https://img.shields.io/badge/CI-passing-brightgreen.svg)](.github/workflows/ci.yml)
 [![Tests](https://img.shields.io/badge/tests-14_passed-success.svg)](tests/)
-[![🤗 Spaces](https://img.shields.io/badge/🤗_Demo-Hugging_Face-yellow.svg)](https://huggingface.co/spaces/Yobapatrick/dogs-vs-cats)
+[![🤗 Spaces](https://img.shields.io/badge/🤗_Demo-Hugging_Face-yellow.svg)](https://huggingface.co/spaces/PatrickYoba/dogs-vs-cats)
 
 <br/>
 
@@ -94,7 +94,7 @@ End-to-end binary image classification (cat vs dog) treated as a **rigorous head
 
 A Streamlit app runs both models side-by-side on any image you upload — no install required.
 
-[![Open in 🤗 Spaces](https://img.shields.io/badge/🤗_Open_in_Spaces-Try_it_live-yellow?style=for-the-badge)](https://huggingface.co/spaces/Yobapatrick/dogs-vs-cats)
+[![Open in 🤗 Spaces](https://img.shields.io/badge/🤗_Open_in_Spaces-Try_it_live-yellow?style=for-the-badge)](https://huggingface.co/spaces/PatrickYoba/dogs-vs-cats)
 
 Or run it yourself:
 
@@ -249,7 +249,7 @@ dogs-vs-cats/
 ### Option A — Local install
 
 ```bash
-git clone https://github.com/Yobapatrick/dogs-vs-cats.git
+git clone https://github.com/PatrickYoba/dogs-vs-cats.git
 cd dogs-vs-cats
 
 python -m venv .venv
@@ -456,7 +456,7 @@ Every notebook imports from `src/` — no copy-pasted code. Modify the package, 
 This is primarily a portfolio repo, but PRs and issues are welcome:
 
 ```bash
-git clone https://github.com/Yobapatrick/dogs-vs-cats.git
+git clone https://github.com/PatrickYoba/dogs-vs-cats.git
 cd dogs-vs-cats
 make install-dev
 make test
@@ -478,7 +478,7 @@ Pre-commit hooks run automatically on `git commit`. CI runs on every push and PR
 **Patrick Yoba**
 *Engineering Student · 3IL Ingénieurs*
 
-[![GitHub](https://img.shields.io/badge/GitHub-Yobapatrick-181717?style=flat-square&logo=github)](https://github.com/Yobapatrick)
+[![GitHub](https://img.shields.io/badge/GitHub-PatrickYoba-181717?style=flat-square&logo=github)](https://github.com/PatrickYoba)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Patrick_Yoba-0A66C2?style=flat-square&logo=linkedin)](https://linkedin.com/in/patrick-yoba)
 [![Email](https://img.shields.io/badge/Email-D14836?style=flat-square&logo=gmail&logoColor=white)](mailto:yobapatrick2@gmail.com)
 

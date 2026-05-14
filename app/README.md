@@ -25,7 +25,7 @@ The app opens at `http://localhost:8501`.
 ## 🚀 Deploy to Hugging Face Spaces
 
 Hugging Face Spaces gives you a free, persistent URL like
-`https://huggingface.co/spaces/Yobapatrick/dogs-vs-cats`.
+`https://huggingface.co/spaces/PatrickYoba/dogs-vs-cats`.
 Perfect for putting on a CV or LinkedIn.
 
 ### Step 1 — Create the Space
@@ -88,7 +88,7 @@ versus a 390k-parameter CNN. Upload an image and see how each model
 handles it.
 
 Full source code, training pipeline, and methodology:
-👉 https://github.com/Yobapatrick/dogs-vs-cats
+👉 https://github.com/PatrickYoba/dogs-vs-cats
 ```
 
 ### Step 4 — Push to Spaces
@@ -102,7 +102,7 @@ git add .gitattributes
 git add .
 git commit -m "Initial Spaces deployment"
 
-git remote add origin https://huggingface.co/spaces/Yobapatrick/dogs-vs-cats
+git remote add origin https://huggingface.co/spaces/PatrickYoba/dogs-vs-cats
 git push -u origin main
 ```
 
@@ -111,12 +111,12 @@ PyTorch wheels). Subsequent builds are much faster thanks to layer caching.
 
 ### Step 5 — Verify and share
 
-- Visit `https://huggingface.co/spaces/Yobapatrick/dogs-vs-cats`
+- Visit `https://huggingface.co/spaces/PatrickYoba/dogs-vs-cats`
 - Open the **Logs** tab if the build fails — most errors are missing dependencies
 - Embed in your GitHub README:
 
 ```markdown
-[![Open in HF Spaces](https://huggingface.co/datasets/huggingface/badges/raw/main/open-in-hf-spaces-sm.svg)](https://huggingface.co/spaces/Yobapatrick/dogs-vs-cats)
+[![Open in HF Spaces](https://huggingface.co/datasets/huggingface/badges/raw/main/open-in-hf-spaces-sm.svg)](https://huggingface.co/spaces/PatrickYoba/dogs-vs-cats)
 ```
 
 ---
@@ -134,7 +134,7 @@ GitHub blocks pushes over 100 MB. Two options:
 
    ```python
    from huggingface_hub import hf_hub_download
-   ckpt = hf_hub_download(repo_id="Yobapatrick/dogs-vs-cats-models", filename="cnn-best.ckpt")
+   ckpt = hf_hub_download(repo_id="PatrickYoba/dogs-vs-cats-models", filename="cnn-best.ckpt")
    ```
 
    This is cleaner and what most production Spaces do.

@@ -193,7 +193,7 @@ def main() -> None:
         )
         st.markdown("---")
         st.markdown(
-            "🐙 [View source on GitHub](https://github.com/Yobapatrick/dogs-vs-cats)"
+            "🐙 [View source on GitHub](https://github.com/PatrickYoba/dogs-vs-cats)"
         )
 
     # Load models
@@ -262,7 +262,7 @@ def main() -> None:
         """
         <div style='text-align: center; color: #94a3b8; font-size: 0.85rem;'>
             Built with ⚡ PyTorch Lightning · 🎈 Streamlit
-            · <a href='https://github.com/Yobapatrick/dogs-vs-cats' style='color: #94a3b8;'>GitHub</a>
+            · <a href='https://github.com/PatrickYoba/dogs-vs-cats' style='color: #94a3b8;'>GitHub</a>
         </div>
         """,
         unsafe_allow_html=True,
