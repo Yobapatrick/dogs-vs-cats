@@ -103,7 +103,7 @@ pip install -r app/requirements.txt
 streamlit run app/streamlit_app.py
 ```
 
-The interesting part isn't watching the CNN get things right — it's watching the **disagreement cases**, where the baseline votes one way and the CNN the other. Those are the images where pixel intensity alone is misleading and spatial structure does the work.
+The interesting part is not watching the CNN get things right — it's watching the **disagreement cases**, where the baseline votes one way and the CNN the other. Those are the images where pixel intensity alone is misleading and spatial structure does the work.
 
 > 📖 Deployment instructions: [`app/README.md`](app/README.md)
 
